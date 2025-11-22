@@ -15,6 +15,15 @@ spec:
 		  name: webapp-config
     - name: database
       image: mongo:latest      
+	  env:
+	  - name: MONGO_INITDB_ROOT_USERNAME
+	    SecretKeyRef:
+			name: db-credentials
+			key: username
+	  - name: MONGO_INITDB_ROOT_PASSWORD
+	  	SecretKeyRef:
+			name: db-credentials
+			key: password
 --------------------------
 apiVersion: v1
 kind: Service
@@ -35,3 +44,14 @@ metadata:
 data:
 	WEBAPP_ENV: "production"
 	DATABASE_URL: "mongodb://database-service:27017/mydb"
+---
+apiKind: v1
+kind: Secret
+metadata:
+	name: db-credential
+type: opaque
+data:
+	username: <base64-encoded-username>
+	password: <base64-encoded-password>	
+
+	
