@@ -4,7 +4,7 @@ metadata:
   name: webapp-ingress
 spec:
   rules:
-    - host: url.com
+    - host: url.com  # or you can put a ip of your vp
       paths: /
         pathType: Prefix	
         backend:
