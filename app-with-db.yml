@@ -53,5 +53,6 @@ type: opaque
 data:
 	username: <base64-encoded-username>
 	password: <base64-encoded-password>	
+---
 
 	
